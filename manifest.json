@@ -1,0 +1,62 @@
+{
+  "manifest_version": "0.4",
+  "name": "@nimblebraininc/synapse-reef",
+  "version": "0.1.0",
+  "description": "Live ocean conditions from 1,300+ NOAA buoys, queryable by place name. Wave height, swell, wind, water temp, and live buoy-cam panoramas.",
+  "author": {
+    "name": "NimbleBrain Inc",
+    "email": "hello@nimblebrain.ai"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NimbleBrainInc/synapse-reef"
+  },
+  "server": {
+    "type": "python",
+    "entry_point": "mcp_reef.server",
+    "mcp_config": {
+      "command": "python",
+      "args": [
+        "-m",
+        "mcp_reef.server"
+      ]
+    }
+  },
+  "tools": [
+    {
+      "name": "find_buoys",
+      "description": "Find NOAA buoys near a place name or coordinate"
+    },
+    {
+      "name": "get_conditions",
+      "description": "Get current ocean and weather conditions at a NOAA buoy"
+    }
+  ],
+  "_meta": {
+    "org.mpaktrust": {
+      "mtf_version": "0.1",
+      "permissions": {
+        "filesystem": "none",
+        "network": "outbound",
+        "environment": "none",
+        "subprocess": "none",
+        "native": "none"
+      }
+    },
+    "ai.nimblebrain/host": {
+      "host_version": "1.0",
+      "name": "Reef",
+      "icon": "waves",
+      "category": "data",
+      "placements": [
+        {
+          "slot": "sidebar.apps",
+          "resourceUri": "ui://reef/main",
+          "route": "@nimblebraininc/reef",
+          "label": "Reef",
+          "icon": "waves"
+        }
+      ]
+    }
+  }
+}

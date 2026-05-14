@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.ruff_cache/
+.pytest_cache/
+dist/
+build/
+*.mcpb
+.env
+.env.*
+
+# Vendored deps (built by CI/mcpb-pack)
+deps/
+
+# UI build artifacts
+ui/dist/
+ui/node_modules/
