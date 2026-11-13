@@ -1,7 +1,7 @@
 {
   "manifest_version": "0.4",
   "name": "@nimblebraininc/synapse-reef",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Live ocean conditions from 1,300+ NOAA buoys, queryable by place name. Wave height, swell, wind, water temp, and live buoy-cam panoramas.",
   "author": {
     "name": "NimbleBrain Inc",
