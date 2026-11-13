@@ -31,8 +31,15 @@ async def test_tools_are_read_only_and_link_the_card():
 
 async def test_find_buoys_by_place_uses_the_bundled_catalog():
     async with Client(mcp) as client:
-        result = await client.call_tool("find_buoys", {"place": "Half Moon Bay"})
-    assert result.structured_content or result.content
+        found = await client.call_tool("find_buoys", {"place": "Half Moon Bay"})
+        unknown = await client.call_tool("find_buoys", {"place": "Nowhereville Xyz"})
+    assert "error" not in found.structured_content
+    assert found.structured_content["matches"]
+    assert {"lat", "lng"} <= set(found.structured_content["search"])
+    # An unknown place answers with an error and no matches, so the first
+    # assertions above can only pass on a real resolution.
+    assert unknown.structured_content["matches"] == []
+    assert "error" in unknown.structured_content
 
 
 async def test_ui_resource_is_an_mcp_app():
